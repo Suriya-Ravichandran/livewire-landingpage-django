@@ -21,7 +21,7 @@ def about(request):
         "title":title,
     }
 
-    return render(request,"pages/about.html",context)
+    return render(request,"about.html",context)
 
 
 def oldurl(request):
