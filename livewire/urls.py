@@ -8,4 +8,6 @@ urlpatterns = [
     path("about/",views.about,name="aboutus"),
     path("oldurl/",views.oldurl,name="oldurl"),
     path("newurl/",views.newurl,name="newurl"),
+    path("signin/",views.signin,name="signin"),
+    path("signup/",views.signup,name="signup"),
 ]

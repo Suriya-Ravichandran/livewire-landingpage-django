@@ -29,3 +29,19 @@ def oldurl(request):
 
 def newurl(request):
     return HttpResponse("This new url")
+
+def signin(request):
+    title="signin"
+
+    context={
+        "title":title
+    }
+    return render(request,'signin.html',context)
+
+def signup(request):
+    title="signup"
+
+    context={
+        "title":title
+    }
+    return render(request,'signup.html',context)

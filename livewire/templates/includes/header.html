@@ -9,7 +9,11 @@
                 </a>
             </div>
             <div class="enroll-btn md-2">
+                 {% if not user.is_authenticated %}
+                  <a class="btn btn-primary" href="{% url 'livewire:signin' %}" role="button">Sign in</a>
+                  {% else %}
                 <a class="btn btn-danger" href="#" role="button">Enroll Now</a>
+                {% endif %}
             </div>
         </div>
     </div>
