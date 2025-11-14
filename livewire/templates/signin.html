@@ -7,15 +7,33 @@
     <div class="card center" style="width: 30rem;">
         <div class="card-body">
             <main class="form-signin container m-auto">
-            <form>
+            <form action="#" method="post">
+                {% csrf_token %}
                 <img class="mb-4" src="{% static 'assets/img/livewirelogo.png' %}" alt="" width="150"height="57"/>
+                <!-- message here -->
+                {% if messages %}
+                 {% for message in messages%}
+                    {% if message.tags in "error"%}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{message}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% else%}
+                     <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{message}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     </div>
+                    {% endif %}
+                {% endfor %}
+                {% endif%}
+
                 <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
                 <div class="form-floating mt-2">
                 <input type="text" class="form-control" id="floatingInput" placeholder="Jhon" name="name"/>
                 <label for="floatingInput">Username</label>
                 </div>
                 <div class="form-floating mt-2">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"/>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"/>
                 <label for="floatingPassword">Password</label>
                 </div>
                 <button class="btn btn-primary w-100 py-2 mt-2" type="submit">
