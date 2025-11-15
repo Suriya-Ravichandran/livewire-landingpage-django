@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.urls import reverse
+from .forms import EnrollForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def index(request):
@@ -58,3 +61,13 @@ def signup(request):
 def signout(request):
     logout(request)
     return redirect("livewire:index")
+
+@login_required
+def enroll(request):
+    form=EnrollForm(request.POST or None,request.FILES or None)
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Enroll Sucessfully")
+        return redirect("livewire:enroll")
+    else:
+        return render(request,'enrollform.html',{"form":form})
