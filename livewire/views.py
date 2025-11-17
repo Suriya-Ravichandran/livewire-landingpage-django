@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.urls import reverse
 from .forms import EnrollForm
 from django.contrib.auth.decorators import login_required
-
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
@@ -67,7 +68,30 @@ def enroll(request):
     form=EnrollForm(request.POST or None,request.FILES or None)
     if form.is_valid():
         form.save()
+        name=request.POST.get("name")
+        phone=request.POST.get("phone")
+        email=request.POST.get("email")
+        address=request.POST.get("address")
+        course=request.POST.get("course")
+        sendemail="noreplay@livewire.com"
+        subject="You Got a Enquiry in Python course registration"
+        message=render_to_string("enquirymail.html",{
+                "name":name,
+                "phoneno":phone,
+                "email":email,
+                "course":course,
+                "address":address,
+            })
+        
+        subjectthanku="Thank you for Registed Python course at Livewire"
+        messagethanku=render_to_string("Thankumail.html",{
+                "name":name,
+                "course":course
+            })
         messages.success(request, "Enroll Sucessfully")
+        # send_mail(subject,message,sendemail,["rsuriya119@gmail.com",])
+        send_mail(subjectthanku,messagethanku,sendemail,[email,])
+
         return redirect("livewire:enroll")
     else:
         return render(request,'enrollform.html',{"form":form})
