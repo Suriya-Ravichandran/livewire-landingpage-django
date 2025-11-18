@@ -15,3 +15,11 @@ class Enroll(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.course}"
+
+
+class StudentProject(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    thumbnail = models.ImageField(upload_to="project_thumbnails/")
+    project_url = models.URLField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)

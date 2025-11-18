@@ -4,15 +4,20 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.urls import reverse
 from .forms import EnrollForm
+from .models import StudentProject
 from django.contrib.auth.decorators import login_required
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
-    return render(request,"index.html")
+    projects= StudentProject.objects.all().order_by('-created_at')[:3]
+    return render(request,"index.html",{"projects":projects})
 
-
+@login_required
+def allproject(request):
+    projects= StudentProject.objects.all().order_by('-created_at')
+    return render(request,"allproject.html",{"projects":projects})
 def about(request):
     return render(request,"about.html")
 
@@ -89,6 +94,7 @@ def enroll(request):
                 "course":course
             })
         messages.success(request, "Enroll Sucessfully")
+        
         # send_mail(subject,message,sendemail,["rsuriya119@gmail.com",])
         send_mail(subjectthanku,messagethanku,sendemail,[email,])
 
