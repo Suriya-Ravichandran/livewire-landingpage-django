@@ -1,9 +1,10 @@
 # 📌 Django Project
 
 A powerful Django-based web application with clean architecture, modular
-apps, and reusable components.\
-This project includes authentication, CRUD features, file uploads, admin
-panel customization, and more.
+apps, and reusable components. This project includes authentication,
+CRUD features, file uploads, admin panel customization, and more.
+
+------------------------------------------------------------------------
 
 ## 🚀 Features
 
@@ -17,6 +18,8 @@ panel customization, and more.
 -   Environment Variable Support
 -   Production-ready Structure
 
+------------------------------------------------------------------------
+
 ## 🛠️ Tech Stack
 
   Layer             Technology
@@ -26,6 +29,8 @@ panel customization, and more.
   Database          SQLite / MySQL / PostgreSQL
   Deployment        Apache2 / Nginx / Docker
   Version Control   Git & GitHub
+
+------------------------------------------------------------------------
 
 ## 📂 Project Structure
 
@@ -52,9 +57,11 @@ panel customization, and more.
         ├── urls.py
         └── admin.py
 
+------------------------------------------------------------------------
+
 ## 🔧 Installation
 
-### 1️⃣ Clone the repository
+### 1️⃣ Clone the Repository
 
 ``` bash
 git clone https://github.com/your-username/your-repo.git
@@ -66,7 +73,7 @@ cd your-repo
 ``` bash
 python -m venv venv
 source venv/bin/activate   # Linux/Mac
-venv\Scripts\activate      # Windows
+venv\Scripts\activate    # Windows
 ```
 
 ### 3️⃣ Install Requirements
@@ -103,23 +110,67 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-## 🖼️ Screenshots
+------------------------------------------------------------------------
 
-Add images inside /screenshots folder.
+## 🖼️ Screenshots (Demo Samples)
 
-## 📦 Deployment
+Place images inside `/screenshots/` folder.
 
-Describe deployment steps here (Apache / Nginx / Docker).
+    ![Home Page](screenshots/demo-home.png)
+    ![Login Page](screenshots/demo-login.png)
+    ![Dashboard](screenshots/demo-dashboard.png)
+
+------------------------------------------------------------------------
+
+## 📦 Deployment (Demo Guide)
+
+### Deploy on Apache (WSGI)
+
+1.  Install Apache & mod_wsgi\
+2.  Update Apache VirtualHost\
+3.  Enable Required Modules\
+4.  Collect Static Files\
+5.  Restart Apache
+
+### Deploy on Nginx + Gunicorn
+
+1.  Install Gunicorn & Nginx\
+2.  Create gunicorn.service\
+3.  Configure Nginx Reverse Proxy\
+4.  Collect Static Files\
+5.  Restart Services
+
+### Docker Deployment
+
+1.  Build image:
+
+``` bash
+docker build -t django-app .
+```
+
+2.  Run container:
+
+``` bash
+docker run -p 8000:8000 django-app
+```
+
+------------------------------------------------------------------------
 
 ## 🤝 Contributing
 
-Pull requests are welcome.
+Contributions, issues, and feature requests are welcome!\
+Feel free to open a Pull Request.
+
+------------------------------------------------------------------------
 
 ## 📄 License
 
-MIT License
+This project is licensed under the **MIT License**.
+
+------------------------------------------------------------------------
 
 ## 👤 Author
 
-Your Name\
-GitHub: https://github.com/yourusername
+**Your Name**\
+GitHub: https://github.com/yourusername\
+Email: your@email.com
